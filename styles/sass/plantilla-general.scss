@@ -1,0 +1,363 @@
+/*------------VARIABLES DEL PROGRAMA----------------*/
+/// 
+/////////////COLORES PARA EL PROGRAMA/////////////
+$color-text:rgb(255,255,255);
+$bg-color:#DAE8FD;
+$header-bg-color-primary:rgba(174,0,255,1) 20%;
+$header-bg-color-secondary:rgba(9,122,252,1) 100%;
+
+$bg-color-menu-moviles:#393939;
+////////////////////////////////////////////////////
+
+/////////////TAMAÑO IMAGENES HEADER/////////////////
+$width-min-img:4rem;
+$height-min-img:4rem;
+
+$width-max-img:8rem;
+$height-max-img:8rem;
+////////////////////////////////////////////////////
+
+/////////////TAMAÑO ELEMENTOS ARTICULOS/////////////////
+
+
+/////////////FUENTES PARA EL PROGRAMA/////////////////
+/*Fuente para el Título o H1*/
+@font-face {
+    font-family: "designer";
+    src: url(/srcs/fonts/designer/Designer.otf);
+}
+
+@font-face {
+    font-family: "tommy";
+    src: url(/srcs/fonts/made_tommy_soft/MADE\ Tommy\ Soft\ Thin\ PERSONAL\ USE.otf);
+}
+////////////////////////////////////////////////////
+
+.video{
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    z-index: -3;
+    object-fit: cover;
+    filter: blur(3px);
+}
+
+body{
+    background-color: $bg-color;
+    margin: 0rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.header{
+    background-image: linear-gradient(180deg, $header-bg-color-primary, $header-bg-color-secondary);
+    display: flex;
+    width: 100%;
+    position: fixed;
+    justify-content: center;
+}
+
+.footer{
+    background-image: linear-gradient(180deg, $header-bg-color-primary, $header-bg-color-secondary);
+    display: flex;
+    width: 100%;
+    height: 8rem;
+    justify-content: center;
+    align-items: center;
+    justify-content: space-around;
+    color: white;
+
+    img{
+        width: 7rem;
+    }
+
+    .suscribe{
+        display: flex;
+        flex-direction: column;
+        color: white;
+
+        a{
+            color: inherit;
+        }
+    }
+
+}
+
+.header-img{
+    width: 10vw;
+    height: 10vh;
+    margin-left: 0.3rem;
+
+    background-image: url(../../srcs/images/iesTetuan.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+
+    min-width: $width-min-img;
+    min-height: $height-min-img;
+
+    max-width: $width-max-img;
+    max-height: $height-max-img;
+}
+
+
+
+.header-title{
+    font-family: "designer";
+    color: $color-text;
+
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+#btnCerrarMenu{
+    width: 2rem;
+    height: 2rem;
+    background-image: url(../../srcs/images/cerrar-Catalin.png);
+    background-size: contain;
+    margin-top: 1rem;
+    margin-left: 0.4rem;
+    border-radius: 0.4rem;
+    opacity: 1;
+    visibility: visible;
+}
+
+
+
+#btnAbrirMenu{
+    width: fit-content;
+    height: fit-content;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    opacity: .84;
+    border-radius: .4rem;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    border: solid black 1px;
+    
+    position: fixed;
+    top: 7rem;
+    left: 1rem;
+
+    img{
+        width: 2rem;
+        height: 2.5rem;
+
+    }
+
+}
+
+#btnAbrirMenu.invisible{
+    opacity: 0;
+    display: none;
+}
+
+
+
+
+.nav{
+    .title-menu{
+        display: none;
+        color: white;
+        align-self: center;
+        justify-self: center;
+        font-size: 1.4rem;
+    }
+
+    width: fit-content;
+    height: 100dvh;
+    box-shadow: 0 0 0 100vmax rgba(0,0,0,0.5);
+    opacity: 0;
+    visibility: hidden;
+    position: fixed;
+    background-color: $bg-color-menu-moviles;
+    transition: transform 0.5s ease; 
+    transform: translateX(-100%);
+}
+
+.visible{
+    opacity: 1;
+    visibility: visible;
+    transition: transform 0.5s ease-out;
+    transform: translateX(0);
+}
+
+
+
+.nav-list{
+    width: fit-content;
+    position: relative;
+    right: 1.7rem;
+    
+    
+
+    li:first-child{
+        border-top: solid white 2px;
+    }
+
+    li{
+        width: 100%;
+        border-bottom: solid white 2px;
+        display: flex;
+        align-items: center;
+        padding-top: .3rem;
+        padding-bottom: .3rem;
+        gap:2rem;
+        justify-content: space-between;
+
+        img{
+            width: 3rem;
+            height: 3rem;
+        }
+
+        a{
+            text-decoration: none;
+            color: $color-text;
+        }
+    }
+}
+
+
+//---------ESTRUCTURA SCSS PARA TABLET-----------------//
+
+@mixin botones-abrircerrar-tablet{
+    #btnAbrirMenu{
+        display: none;
+    }
+
+    #btnCerrarMenu{
+        display: none;
+    }
+}
+
+@mixin nav-options-tablet{
+    .nav{
+        width: fit-content;
+        height: fit-content;
+        box-shadow: none;
+        opacity: 1;
+        visibility: visible;
+        position: fixed;
+        background-color: white;
+        top: 35vh;
+        left: 2rem;
+        transition: none; 
+        transform: none;
+
+        border-radius: .5rem;
+    }
+    
+    .nav-list{
+        width: fit-content;
+        position: relative;
+        right: 1.7rem;
+        
+    
+        li:first-child{
+            border-top: solid black 2px;
+        }
+    
+        li{
+            width: 100%;
+            border-bottom: solid black 2px;
+            display: flex;
+            align-items: center;
+            padding-top: .3rem;
+            padding-bottom: .3rem;
+            gap:2rem;
+            justify-content: space-between;
+    
+            img{
+                width: 3rem;
+                height: 3rem;
+            }
+    
+            a{
+                text-decoration: none;
+                color: black;
+                font-size: 2rem;
+            }
+        }
+    }
+}
+
+@mixin nav-tablet{
+    @include botones-abrircerrar-tablet();
+    @include nav-options-tablet();
+}
+
+@mixin section-tablet{
+
+}
+
+
+@mixin componentes-tablet{
+    @include nav-tablet();
+    @include section-tablet();
+}
+
+
+@mixin estructura-tablet{
+    @include componentes-tablet();
+}
+//////////////////////////////////////////////////////
+
+
+//MEDIA QUERY PARA LA TABLET
+@media (min-width:600px){
+    @include estructura-tablet();
+}
+
+@media (min-width:1025px){
+
+    #btnAbrirMenu{
+        display: none;
+    }
+
+    #btnCerrarMenu{
+        display: none;
+    }
+
+
+
+    .nav{
+        display: flex;
+        flex-direction: column;
+        width: fit-content;
+        height: 2rem;
+        box-shadow: none;
+        opacity: 1;
+        visibility: visible;
+        position: fixed;
+        background-color: rgba(9,122,252,1);
+        top: 12vh;
+        left: 2rem;
+        border-radius: 0rem;
+        padding: 1rem;
+
+        transform: none;
+        transition: height 0.4s ease-out;
+
+        .title-menu{
+            display: inline;
+        }
+
+        .nav-list{
+            visibility: hidden;
+            opacity: 0;
+        }
+    }
+
+    .nav:hover{
+        border-radius: .5rem;
+        height: 22rem;
+
+        .nav-list{
+            visibility: visible;
+            opacity: 1;
+            transition: opacity ease-out .2s;
+        }
+    }
+}
+
